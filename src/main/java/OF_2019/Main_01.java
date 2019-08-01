@@ -1,8 +1,6 @@
 package OF_2019;
 
-import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 题目描述
@@ -25,36 +23,42 @@ import java.util.TreeMap;
  * 100
  * 1000
  * 1001
+ *
+ * O(N*logN)
  */
 public class Main_01 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String[] firstLines = scanner.nextLine().split(" ");
-
-        int workNumber = Integer.valueOf(firstLines[0]);
-        int peopleNumber = Integer.valueOf(firstLines[1]);
+        Scanner sc = new Scanner(System.in);
+        int workNumber = sc.nextInt();
+        int peopleNumber = sc.nextInt();
 
         TreeMap<Integer, Integer> works = new TreeMap<Integer, Integer>();
 
         for(int i = 0 ; i < workNumber ; i++) {
-            String[] tmp = scanner.nextLine().split(" ");
-            works.put(Integer.valueOf(tmp[1]), Integer.valueOf(tmp[0]));
+            int work = sc.nextInt();
+            int money = sc.nextInt();
+            works.put(work, money);
         }
-        if(peopleNumber > 0) {
-            String[] peoples = scanner.nextLine().split(" ");
+        List<Integer> people = new ArrayList<Integer>();
 
-            Set<Integer> keySet = works.keySet();
-            Integer[] keys = new Integer[keySet.size()];
-            keySet.toArray(keys);
-            for (String p : peoples) {
-                for (int x = keys.length - 1; x >= 0; x--) {
-                    if (works.get(keys[x]) <= Integer.valueOf(p)) {
-                        System.out.println(keys[x]);
-                        break;
-                    }
-                }
+        for(int i = 0 ; i < peopleNumber ; i++){
+            Integer p = sc.nextInt();
+            people.add(p);
+            if(works.get(p) == null){
+                works.put(p, 0);
             }
+        }
+        Set<Integer> keySet = works.keySet();
+        Iterator<Integer> it = keySet.iterator();
+        int max = 0;
+        while(it.hasNext()){
+            Integer w = it.next();
+            max = Math.max(max, works.get(w));
+            works.put(w, max);
+        }
+        for(Integer p : people) {
+            System.out.println(works.get(p));
         }
     }
 
