@@ -1,5 +1,9 @@
 package OF_2019;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * 题目描述
  * 小Q正在给一条长度为n的道路设计路灯安置方案。
@@ -23,6 +27,31 @@ package OF_2019;
  *
  * 1
  * 3
+ *
+ * O(n)
  */
 public class Main_03 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int demoNumber = Integer.valueOf(sc.nextLine());
+
+        List<Integer> resList = new ArrayList<>();
+        for(int i = 0 ; i < demoNumber ; i++) {
+            sc.nextLine();
+            char[] demos = sc.nextLine().toCharArray();
+            int res = 0;
+            for(int c = 0 ; c < demos.length ; c++) {
+                if(demos[c] == '.'){
+                    res++;
+                    c = c + 2;
+                }
+            }
+            resList.add(res);
+        }
+
+        for(Integer r : resList){
+            System.out.println(r);
+        }
+    }
 }
