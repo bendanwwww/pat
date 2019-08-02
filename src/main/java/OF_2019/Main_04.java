@@ -1,6 +1,8 @@
 package OF_2019;
 
 
+import java.util.Scanner;
+
 /**
  * 题目描述
  * 牛牛去犇犇老师家补课，出门的时候面向北方，但是现在他迷路了。虽然他手里有一张地图，但是他需要知道自己面向哪个方向，请你帮帮他。
@@ -22,6 +24,29 @@ package OF_2019;
 public class Main_04 {
 
     public static void main(String[] args) {
+        String[] direction = {"N", "E", "S", "W"};
+        int initDirection = 0;
 
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
+        char[] turn = sc.nextLine().toCharArray();
+
+        for(char t : turn){
+            if(t == 'R') {
+                if(initDirection == 3){
+                    initDirection = 0;
+                }else{
+                    initDirection++;
+                }
+            }else{
+                if(initDirection == 0){
+                    initDirection = 3;
+                }else{
+                    initDirection--;
+                }
+            }
+        }
+
+        System.out.println(direction[initDirection]);
     }
 }
