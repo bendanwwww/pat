@@ -20,6 +20,7 @@ import java.util.Scanner;
  *
  * E
  *
+ * O(n)
  */
 public class Main_04 {
 
