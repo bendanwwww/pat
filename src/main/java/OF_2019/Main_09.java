@@ -1,6 +1,9 @@
 package OF_2019;
 
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * 题目描述
  * 小易有一个古老的游戏机，上面有着经典的游戏俄罗斯方块。因为它比较古老，所以规则和一般的俄罗斯方块不同。
@@ -16,7 +19,7 @@ package OF_2019;
  * 小易这局游戏获得的分数
  *
  * 3 9
- * 1 1 2 2 2 3 1 2 35 2
+ * 1 1 2 2 2 3 1 2 3
  *
  * 2
  */
@@ -24,5 +27,17 @@ public class Main_09 {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] point = new int[n];
+
+        for(int i = 0 ; i < m ; i++) {
+            point[sc.nextInt() - 1]++;
+        }
+        Arrays.sort(point);
+        System.out.println(point[0]);
     }
 }
