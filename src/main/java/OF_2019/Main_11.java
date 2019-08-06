@@ -1,6 +1,11 @@
 package OF_2019;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * 题目描述
  * 又到了丰收的季节，恰逢小易去牛牛的果园里游玩。
@@ -30,5 +35,52 @@ public class Main_11 {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] sumApples = new int[n];
+
+        int sum = 0;
+        for(int i = 0 ; i < n ; i++) {
+            int apples = sc.nextInt();
+            sum = sum + apples;
+            sumApples[i] = sum;
+        }
+
+        int m = sc.nextInt();
+
+        for(int i = 0 ; i < m ; i++) {
+            int next = sc.nextInt();
+
+            int left = 0;
+            int right = n - 1;
+
+            boolean s = false;
+
+            while(left + 1 < right) {
+                int middle = (left + right) / 2;
+                if(sumApples[middle] == next) {
+                    s = true;
+                    System.out.println(middle + 1);
+                    break;
+                }
+                if(sumApples[middle] < next) {
+                    left = middle;
+                }
+
+                if(sumApples[middle] > next) {
+                    right = middle;
+                }
+            }
+            if(!s) {
+                if(sumApples[left] >= next) {
+                    System.out.println(left + 1);
+                }else{
+                    System.out.println(right + 1);
+                }
+
+            }
+        }
     }
 }
