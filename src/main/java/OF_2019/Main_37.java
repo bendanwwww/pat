@@ -1,6 +1,9 @@
 package OF_2019;
 
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * 题目描述
  * 你需要爬上一个N层的楼梯，在爬楼梯过程中， 每阶楼梯需花费非负代价，第i阶楼梯花费代价表示为cost[i]， 一旦你付出了代价，你可以在该阶基础上往上爬一阶或两阶。
@@ -22,5 +25,19 @@ public class Main_37 {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        Integer[] steps = Arrays.stream(sc.nextLine().split(",")).map(s -> Integer.parseInt(s)).toArray(Integer[] :: new);
+
+        int[] dp = new int[steps.length + 1];
+
+        dp[0] = 0;
+        dp[1] = 0;
+
+        for(int i = 2 ; i <= steps.length ; i++) {
+            dp[i] = Math.min(dp[i - 2] + steps[i - 2], dp[i - 1] + steps[i - 1]);
+        }
+
+        System.out.println(dp[dp.length - 1]);
     }
 }
