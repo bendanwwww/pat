@@ -22,17 +22,19 @@ public class Main_38 {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        char[] in = sc.nextLine().toCharArray();
 
-        char[] ins = sc.nextLine().toCharArray();
+        int out = 0;
 
-        int state = 0;
+        int l_c = 0;
 
-        int min = 0;
-
-        for(int i = 0 ; i < ins.length ; i++) {
-
+        for(int i = 0 ; i < in.length ; i++) {
+            if(in[i] == 'C') {
+                out = out + (i - l_c);
+                l_c++;
+            }
         }
 
-        System.out.println(min);
+        System.out.println(out);
     }
 }
