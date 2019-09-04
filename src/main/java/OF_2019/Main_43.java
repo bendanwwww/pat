@@ -1,6 +1,9 @@
 package OF_2019;
 
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * 题目描述
  * 假设你是一位很有爱的幼儿园老师，想要给幼儿园的小朋友们一些小糖果，但是，每个孩子最多只能给一块糖果。
@@ -26,6 +29,32 @@ package OF_2019;
 public class Main_43 {
 
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Integer[] kids = Arrays.stream(sc.nextLine().split(" ")).map(s -> Integer.parseInt(s)).sorted().toArray(Integer[] :: new);
+
+        Integer[] sugars = Arrays.stream(sc.nextLine().split(" ")).map(s -> Integer.parseInt(s)).sorted().toArray(Integer[] :: new);
+
+        int out = 0;
+
+        int sugarState = 0;
+
+        for(int i = 0 ; i < kids.length ; i++) {
+            if(sugarState >= sugars.length) {
+                break;
+            }
+            int x;
+            for(x = sugarState ; x < sugars.length ; x++) {
+                if(sugars[x] >= kids[i]) {
+                    out++;
+                    break;
+                }
+            }
+            sugarState = x + 1;
+        }
+
+        System.out.println(out);
 
     }
 }
