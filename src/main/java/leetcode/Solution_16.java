@@ -1,5 +1,6 @@
 package leetcode;
 
+
 /**
  * 题目描述
  *
@@ -20,7 +21,36 @@ public class Solution_16 {
 
     public int candy(int[] ratings) {
 
-        return 0;
+        int res = ratings.length;
+
+        int[] sweet = new int[ratings.length];
+
+        for(int i = 0 ; i < sweet.length ; i++) {
+            sweet[i] = 1;
+        }
+
+        for(int i = 1 ; i < sweet.length ; i++) {
+            if(ratings[i] > ratings[i - 1] && sweet[i] <= sweet[i - 1]) {
+                res = res + sweet[i - 1] - sweet[i] + 1;
+                sweet[i] =  sweet[i - 1] + 1;
+            }
+        }
+
+        for(int i = sweet.length - 2 ; i >=0 ; i--) {
+            if(ratings[i] > ratings[i + 1] && sweet[i] <= sweet[i + 1]) {
+                res = res + sweet[i + 1] - sweet[i] + 1;
+                sweet[i] = sweet[i + 1] + 1;
+
+            }
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Solution_16 solution = new Solution_16();
+        int res = solution.candy(new int[]{1, 3, 5});
+        System.out.println(res);
     }
 
 }

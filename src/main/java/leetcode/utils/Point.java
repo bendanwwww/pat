@@ -1,5 +1,8 @@
 package leetcode.utils;
 
+/**
+ * Definition for a point.
+ */
 public class Point {
 
     public int x;

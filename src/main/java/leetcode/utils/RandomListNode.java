@@ -1,5 +1,8 @@
 package leetcode.utils;
 
+/**
+ * Definition for singly-linked list with a random pointer.
+ */
 public class RandomListNode {
 
     public int label;
