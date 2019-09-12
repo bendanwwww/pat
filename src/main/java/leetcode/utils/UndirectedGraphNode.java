@@ -11,7 +11,8 @@ public class UndirectedGraphNode {
     public ArrayList<UndirectedGraphNode> neighbors;
 
     public UndirectedGraphNode(int x) {
-        label = x; neighbors = new ArrayList<UndirectedGraphNode>();
+        label = x;
+        neighbors = new ArrayList<UndirectedGraphNode>();
     }
 
 }
